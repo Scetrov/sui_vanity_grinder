@@ -3,7 +3,8 @@
 A fast, **multi-core** vanity address generator for the **Sui** blockchain.  
 It supports **Ed25519**, **Secp256k1**, and **Secp256r1 (P‑256)**, searches for **prefixes** and/or **suffixes** in the Sui address, and exports **importable Bech32 private keys** with the `suiprivkey` prefix.
 
-> ⚠️ **Security**: Run offline on a trusted machine. Never share your private keys. Back them up securely.
+> [!IMPORTANT]
+> Run offline on a trusted machine. Never share your private keys. Back them up securely.
 
 ---
 
@@ -29,6 +30,7 @@ which can be imported into Sui tooling that supports the `suiprivkey` format.
 ---
 
 ## Features
+
 - 🔀 **Schemes**: `ed25519`, `secp256k1`, `secp256r1`
 - ⚙️ **Multi-core**: uses Python `multiprocessing` (one process per worker)
 - 🎯 **Matching**: `--prefix` and/or `--suffix` (hex, case-insensitive)
@@ -52,6 +54,7 @@ python sui_vanity_grinder.py --scheme secp256k1 --prefix dead --suffix beef --co
 ```
 
 ### Output (one JSON line per hit)
+
 ```json
 {
   "scheme": "ed25519",
@@ -65,6 +68,7 @@ python sui_vanity_grinder.py --scheme secp256k1 --prefix dead --suffix beef --co
 }
 ```
 
+> [!NOTE]
 > Use the `suiprivkey` field for importing the private key into Sui-compatible tools. The `private_key_hex` is provided for debugging only.
 
 ---
@@ -98,7 +102,8 @@ make shell
 
 ## CLI
 
-```
+
+```text
 usage: sui_vanity_grinder.py [-h] [--scheme {ed25519,secp256k1,secp256r1}]
                              [--prefix PREFIX] [--suffix SUFFIX]
                              [--count COUNT] [--workers WORKERS]
@@ -124,12 +129,14 @@ usage: sui_vanity_grinder.py [-h] [--scheme {ed25519,secp256k1,secp256r1}]
 - Increase `--workers` up to your logical core count.
 - Prefer running **offline** (air‑gapped is best) and back up winning keys immediately.
 
+> [!NOTE]
 > GPU acceleration: possible but non-trivial (due to key generation on curves and hashing). If needed, you can offload the BLAKE2b inner loop via CUDA/OpenCL and keep keygen on CPU; open an issue or PR for this.
 
 ---
 
 ## Project Structure
-```
+
+```text
 .
 ├── sui_vanity_grinder.py  # main utility
 ├── Dockerfile             # minimal Python 3.12-slim image
@@ -139,4 +146,5 @@ usage: sui_vanity_grinder.py [-h] [--scheme {ed25519,secp256k1,secp256r1}]
 ---
 
 ## License
-MIT — © Richard Slater
+
+MIT — © Scetrov
