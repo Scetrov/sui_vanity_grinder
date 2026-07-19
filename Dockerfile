@@ -1,5 +1,5 @@
 # Use the small, efficient base image
-FROM python:3.12-slim
+FROM python:3.14-slim
 
 # Avoid interactive prompts and cache bloat
 ENV DEBIAN_FRONTEND=noninteractive \
