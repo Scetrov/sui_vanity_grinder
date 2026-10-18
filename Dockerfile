@@ -1,6 +1,6 @@
 # Use the small, efficient base image. Python 3.13 is pinned because the
 # coincurve runtime dependency does not yet publish a Python 3.14 wheel.
-FROM python:3.13-slim@sha256:9d2e5553305c7c7b0097999bb17187c69b921ccd6bc9d40e4bb5ebe652c00285
+FROM python:3.14-slim@sha256:a2b82f3c48559aa0a8446d9af49826b6e2b2016f4cd2afabfe6013ec53729170
 
 # Avoid interactive prompts and cache bloat
 ENV DEBIAN_FRONTEND=noninteractive \
